@@ -1,6 +1,6 @@
 # Java LLD & Machine Coding Practice
 
-This repository contains a general guide towards how to approach lld and machine coding questions. 
+This repository contains Java implementations for LLD and machine coding practice.
 
 ## Structure
 - case-studies/ → problem-wise solutions
@@ -20,6 +20,122 @@ This repository contains a general guide towards how to approach lld and machine
 - Design patterns
 - Low-level design
 - Machine coding
+
+## Build Automation Tool
+Used a common root **Gradle** build for the repo, and keep per-module build.gradle files only if needed.
+
+### Root-level Gradle
+Have:
+<br>**settings.gradle** at root
+<br>**build.gradle** at root
+
+### How it works
+
+#### Root `settings.gradle`
+This defines all modules:
+
+```text
+rootProject.name = "java-lld-practice"
+
+include("shared")
+include("parking-lot")
+include("splitwise")
+include("elevator")
+include("chess")
+```
+
+#### Root `build.gradle`
+Put common things here:
+- Java version
+- repositories
+- common dependencies
+- test setup
+
+#### Example:
+```text
+plugins {
+    id 'java'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+```
+
+### When to add module-specific `build.gradle`
+
+Only add one in a module if that module needs:
+
+- extra dependencies
+- different plugins
+- special test setup
+
+Example:
+
+<br>`parking-lot/build.gradle`
+<br>`splitwise/build.gradle`</br>
+
+But if all modules are similar, you can avoid per-module build files entirely.
+
+### Example module build.gradle
+
+Only add this if a module needs extra dependencies.
+
+`parking-lot/build.gradle`
+
+```text
+ dependencies {
+    implementation project(':shared')
+}
+```
+
+If a module does not need shared, you can leave it without a build.gradle.
+
+## How to run
+
+1. On mac first install gradle by running the following commands on terminal :
+
+- brew update
+- brew install gradle
+
+2. Verify gradle installation and version
+
+- gradle -v
+
+3. Create all the config files manually or through some automation (tbh I did it manually)
+
+   - build.gradle
+   - gradle.properties
+   - settings.gradle
+
+4. After creating the files from step 3 use `gradle wrapper` command to generates the necessary files to include the Gradle Wrapper in a project. This creates a self-contained environment that allows anyone to build the project without having Gradle installed manually.
+
+5. After steps 1 to 4 are executed successfully Use Gradle from the root:
+```bash
+./gradlew test
+./gradlew :parking-lot:run
+```
+
 
 ## Repository Structure Sample Tree
 ```text
@@ -198,6 +314,17 @@ case-studies/<problem-name>/
 <br>**design.md** → classes, relationships, patterns used.
 <br>**notes.md** → mistakes, improvements, interview learnings.
 <br>**test-cases.md** → edge cases and sample scenarios.
+
+
+## Goal
+
+Practice:
+
+- OOP design
+- SOLID principles
+- design patterns
+- clean code
+- interview-style machine coding
 
 
 
