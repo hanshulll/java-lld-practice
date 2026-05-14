@@ -82,6 +82,30 @@ subprojects {
 }
 ```
 
+Now the issue with shared configuration is that how will it know which file is the main file in your case study folder and execute it to start the program. To solve this issue a `Better approach: module-specific application config` where a small config file is needed to be created inside your case study implementation folder.
+
+For example, in `parking-lot/build.gradle`:
+```text
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.yourname.parkinglot.Main'
+}
+
+dependencies {
+    implementation project(':shared')
+}
+```
+
+Then run:
+```text
+./gradlew :parking-lot:run
+```
+Do this only for modules you actively want to run.
+
+
 ### When to add module-specific `build.gradle`
 
 Only add one in a module if that module needs:
