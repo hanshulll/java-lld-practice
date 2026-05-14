@@ -2,6 +2,7 @@
 This repository contains lld case studies.
 
 
+## Repository Structure Sample
 ```text
 java-lld-practice/
 ├── README.md
