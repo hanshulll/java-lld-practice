@@ -43,6 +43,8 @@ java-lld-practice/
 │   ├── strategy/
 │   ├── observer/
 │   └── builder/
+├── lld-notes/
+├── machine-coding-templates/
 └── playground/
     ├── experiments/
     └── quick-tests/
