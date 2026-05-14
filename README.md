@@ -1,8 +1,27 @@
-# java-lld-practice
-This repository contains lld case studies.
+# Java LLD & Machine Coding Practice
 
+This repository contains a general guide towards how to approach lld and machine coding questions. 
 
-## Repository Structure Sample
+## Structure
+- case-studies/ → problem-wise solutions
+- patterns/ → standalone design pattern examples
+- shared/ → reusable helpers and models
+- templates/ → problem/design/checklist templates
+
+## How to use
+1. Pick a case study
+2. Start with v1
+3. Refactor into v2/final
+4. Add notes and test cases
+
+## Topics covered
+- OOP
+- SOLID
+- Design patterns
+- Low-level design
+- Machine coding
+
+## Repository Structure Sample Tree
 ```text
 java-lld-practice/
 ├── README.md
@@ -39,12 +58,146 @@ java-lld-practice/
 │       └── final/
 ├── patterns/
 │   ├── singleton/
+│   │   ├── src/
+│   │   └── README.md
 │   ├── factory/
 │   ├── strategy/
 │   ├── observer/
 │   └── builder/
 ├── lld-notes/
-├── machine-coding-templates/
+├── machine-coding/
+│   ├── online-assessment-style/
+│   ├── interview-style/
+│   └── timed-practice/
 └── playground/
     ├── experiments/
     └── quick-tests/
+```
+
+## Java package template for each case study
+
+```text
+src/
+└── com/yourname/<problem-name>/
+    ├── Main.java
+    ├── model/
+    │   ├── Vehicle.java
+    │   ├── Ticket.java
+    │   ├── Floor.java
+    │   └── ...
+    ├── service/
+    │   ├── ParkingService.java
+    │   ├── AllocationService.java
+    │   └── ...
+    ├── repository/
+    │   ├── TicketRepository.java
+    │   └── ...
+    ├── strategy/
+    │   ├── PricingStrategy.java
+    │   ├── SpotAllocationStrategy.java
+    │   └── ...
+    ├── factory/
+    │   ├── VehicleFactory.java
+    │   └── ...
+    ├── handler/
+    │   └── ...
+    ├── exception/
+    │   ├── ParkingFullException.java
+    │   ├── InvalidTicketException.java
+    │   └── ...
+    └── util/
+        └── ...
+```
+
+## For small machine coding problems
+
+Keep it simple:
+
+```text
+com.yourname.tictactoe
+├── Main.java
+├── model
+├── service
+├── exception
+└── util
+```
+
+## For larger LLD problems
+
+Use more structure:
+
+```text
+com.yourname.parkinglot
+├── Main.java
+├── model
+├── service
+├── repository
+├── strategy
+├── factory
+├── exception
+├── controller
+└── util
+```
+
+## Example: Parking Lot package layout
+
+```text
+src/
+└── com/yourname/parkinglot/
+    ├── Main.java
+    ├── model/
+    │   ├── ParkingLot.java
+    │   ├── Floor.java
+    │   ├── ParkingSpot.java
+    │   ├── Vehicle.java
+    │   ├── Ticket.java
+    │   └── enums/
+    │       ├── VehicleType.java
+    │       └── SpotType.java
+    ├── service/
+    │   ├── ParkingLotService.java
+    │   ├── EntryService.java
+    │   └── ExitService.java
+    ├── strategy/
+    │   ├── SpotAllocationStrategy.java
+    │   ├── ClosestSpotAllocationStrategy.java
+    │   └── PricingStrategy.java
+    ├── repository/
+    │   └── TicketRepository.java
+    ├── exception/
+    │   ├── ParkingFullException.java
+    │   └── TicketNotFoundException.java
+    └── util/
+        └── IdGenerator.java
+```
+
+## How to save multiple case studies cleanly
+
+For each case study, follow this pattern:
+
+```text
+case-studies/<problem-name>/
+├── v1/
+│   ├── src/
+│   ├── README.md
+│   └── notes.md
+├── v2/
+│   ├── src/
+│   ├── README.md
+│   └── notes.md
+└── final/
+    ├── src/
+    ├── README.md
+    ├── design.md
+    └── test-cases.md
+```
+
+### What each file should contain
+
+<br>**README.md** → problem summary + how to run.
+<br>**design.md** → classes, relationships, patterns used.
+<br>**notes.md** → mistakes, improvements, interview learnings.
+<br>**test-cases.md** → edge cases and sample scenarios.
+
+
+
