@@ -1,0 +1,11 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.hanshul.Main'
+}
+
+dependencies {
+//    implementation project(':case-studies:orderprocessingsystem')
+}

@@ -1,4 +1,4 @@
 rootProject.name = "java-lld-practice"
 
 
-// include("case-studies/order-processing-system")
+include 'case-studies:orderprocessingsystem'

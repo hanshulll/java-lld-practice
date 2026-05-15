@@ -12,3 +12,5 @@ gradle-app.setting
 
 # Local configuration file (for Android)
 local.properties
+
+.idea/
